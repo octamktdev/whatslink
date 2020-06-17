@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@700&display=swap");
+
+//@import "./reset.scss";
+
+//Colors
+$teal-green-dark: #075e54;
+$teal-green-light: #128c7e;
+$light-green: #25d366;
+
+body {
+  margin: 0;
+  box-sizing: border-box;  
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 { font-family: "Poppins", sans-serif; }
+
+label,
+p,
+li,
+ol,
+input {
+  font-family: "Open Sans", sans-serif;
+}
+
+ol{
+  list-style: inside decimal;
+  padding-left: 0;
+}
+
+label { font-weight: 600; }
+
+main.page-home{
+  display: grid;
+  
+}
