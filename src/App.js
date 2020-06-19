@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import PhoneInput, { isPossiblePhoneNumber } from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import { FiLink2, FiCopy, FiRepeat } from 'react-icons/fi';
-//import axios from 'axios';
 
 function App() {
   const [link, setLink] = useState('')
@@ -16,26 +15,24 @@ function App() {
     const formatedPhone = phone != null ? phone.slice(1) : ''
     let url
 
-    if (phone === '' || !isPossiblePhoneNumber(phone)) { toggleError('add') }
+    if (!isPossiblePhoneNumber(phone)) { toggleError('add') }
 
-    if (formatedPhone !== '') {
-      if (message === '') {
+    else if (formatedPhone !== '') {
+      if (message === '' || message == null) {
         toggleError('remove')
 
         url = `https://api.whatsapp.com/send?phone=${formatedPhone}`
         setLink(url)
         setDisplayGenerate(false)
       }
-      else if (message !== '') {
+      else {
         toggleError('remove')
 
         const formatedMessage = message.split(' ').join('%20')
         url = `https://api.whatsapp.com/send?phone=${formatedPhone}&text=${formatedMessage}`
         setLink(url)
         setDisplayGenerate(false)
-      }
-
-      await getShortLink()
+      }     
     }
   }
 
@@ -43,11 +40,11 @@ function App() {
     const phoneInputContainer = document.getElementById('phone-input-container')
     const haveClassError = phoneInputContainer.classList.contains('error')
 
-    if (method === 'add') {
-      if (!haveClassError) { phoneInputContainer.classList.add('error') }
+    if (method === 'add' && !haveClassError) {
+      phoneInputContainer.classList.add('error')
     }
-    if (method === 'remove') {
-      if (haveClassError) { phoneInputContainer.classList.remove('error') }
+    if (method === 'remove' && haveClassError) {
+      phoneInputContainer.classList.remove('error')
     }
   }
 
@@ -66,11 +63,7 @@ function App() {
   function newLink(e) {
     setLink('')
     setDisplayGenerate(true)
-  }
-
-  async function getShortLink() {
-    console.log('em breve')
-  }
+  } 
 
   return (
     <main className="page-home">
