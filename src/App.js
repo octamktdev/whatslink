@@ -2,13 +2,7 @@ import React, { useState } from 'react';
 import PhoneInput, { isPossiblePhoneNumber } from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import { FiLink2, FiCopy, FiRepeat } from 'react-icons/fi';
-
-
-/*
-Regra geral: 
-- Encurtar link : https://dev.bitly.com/
-*/
-
+//import axios from 'axios';
 
 function App() {
   const [link, setLink] = useState('')
@@ -16,7 +10,7 @@ function App() {
   const [message, setMessage] = useState('')
   const [displayGenerate, setDisplayGenerate] = useState(true)
 
-  function handleGenerateLink(e) {
+  async function handleGenerateLink(e) {
     e.preventDefault()
 
     const formatedPhone = phone != null ? phone.slice(1) : ''
@@ -40,6 +34,8 @@ function App() {
         setLink(url)
         setDisplayGenerate(false)
       }
+
+      await getShortLink()
     }
   }
 
@@ -70,6 +66,10 @@ function App() {
   function newLink(e) {
     setLink('')
     setDisplayGenerate(true)
+  }
+
+  async function getShortLink() {
+    console.log('em breve')
   }
 
   return (
