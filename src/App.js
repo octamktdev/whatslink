@@ -3,6 +3,7 @@ import PhoneInput, { isPossiblePhoneNumber } from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import { FiLink2, FiCopy, FiRepeat } from 'react-icons/fi';
 
+
 /*
 Regra geral: 
 - Encurtar link : https://dev.bitly.com/
@@ -16,31 +17,30 @@ function App() {
   const [displayGenerate, setDisplayGenerate] = useState(true)
 
   function handleGenerateLink(e) {
-    e.preventDefault();
+    e.preventDefault()
 
     const formatedPhone = phone != null ? phone.slice(1) : ''
     let url
 
+    if (phone === '' || !isPossiblePhoneNumber(phone)) { toggleError('add') }
+
     if (formatedPhone !== '') {
       if (message === '') {
         toggleError('remove')
+
         url = `https://api.whatsapp.com/send?phone=${formatedPhone}`
         setLink(url)
         setDisplayGenerate(false)
       }
       else if (message !== '') {
         toggleError('remove')
+
         const formatedMessage = message.split(' ').join('%20')
         url = `https://api.whatsapp.com/send?phone=${formatedPhone}&text=${formatedMessage}`
         setLink(url)
         setDisplayGenerate(false)
       }
     }
-
-    if (phone === '' || !isPossiblePhoneNumber(phone)) {
-      toggleError('add')
-    }
-
   }
 
   function toggleError(method) {
@@ -48,15 +48,10 @@ function App() {
     const haveClassError = phoneInputContainer.classList.contains('error')
 
     if (method === 'add') {
-      if (!haveClassError) {
-        phoneInputContainer.classList.add('error')
-      }
+      if (!haveClassError) { phoneInputContainer.classList.add('error') }
     }
-
     if (method === 'remove') {
-      if (haveClassError) {
-        phoneInputContainer.classList.remove('error')
-      }
+      if (haveClassError) { phoneInputContainer.classList.remove('error') }
     }
   }
 
@@ -76,7 +71,6 @@ function App() {
     setLink('')
     setDisplayGenerate(true)
   }
-
 
   return (
     <main className="page-home">
@@ -168,7 +162,7 @@ function App() {
             Novo link
           </button>
         </article>
-        
+
       </section>
     </main>
   );
