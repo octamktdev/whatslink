@@ -1,0 +1,71 @@
+@import "/src/style/reset.scss";
+
+.app-footer{
+  padding-top: 2rem;
+}
+.btn-blue-1874D9 {
+    padding: 1rem 2.5rem;
+    height: 60px;
+    background-color: #1874D9;
+    outline: none;
+    position: relative;
+    border-radius: 0;
+    font-weight: 600;
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+  
+    transition: .2s ease-in-out;
+  
+    &:hover{
+      color: #fff;
+    }
+    &::after{
+      /*content: url(../img/border-btn.png);*/
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    &::before{
+      /*content: url(../img/dots-btn.png);*/
+      position: absolute;
+      z-index: -1;
+      left: 0;
+      top: 0;
+      transition: .2s ease-in-out;
+    }
+    &:hover::before{
+      top: 1.5rem;
+      left: -.5rem;
+    }
+  
+  }
+  .chamada-octadesk h3{
+      font-weight: 700;
+  }
+  .chamada-octadesk p{
+    padding: 1rem 0;
+  }
+  .first-line-footer{
+    padding: 2rem 0;
+  }
+  .second-line-footer{
+    background-color: #EFF6FF;
+    padding: 1rem 0;
+  }
+  
+  @media (max-width: 575.98px) { 
+    .app-footer{
+      padding: 2rem 0;
+    }
+    .chamada-octadesk{
+      padding: 1.5rem 0;
+    }
+    .chamada-octadesk h3, p{
+      text-align: center;
+    }
+    .btn-blue-1874D9{
+      position: relative;
+      left: 15%;
+    }
+  }
